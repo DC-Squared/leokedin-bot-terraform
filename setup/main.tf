@@ -45,6 +45,9 @@ module "cluster" {
 module "service" {
   source = "../modules/service"
 
+  TASK_DEFINITION = module.task.arn
+  CLUSTER         = module.cluster.arn
+
   depends_on = [
     module.task,
     module.cluster
