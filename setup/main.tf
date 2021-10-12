@@ -15,8 +15,15 @@ provider "aws" {
   region     = "sa-east-1"
 }
 
+module "ecr" {
+  source  = "../modules/ecr"
+}
 module "task" {
   source  = "../modules/task"
+
+  depends_on = [
+    module.ecr
+  ]
 }
 
 module "cluster" {
