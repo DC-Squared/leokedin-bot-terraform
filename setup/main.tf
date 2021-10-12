@@ -10,16 +10,28 @@ terraform {
   required_version = ">= 0.14.9"
 }
 
+variable "ECR_IMAGE" {
+  description = "ECR image ARN"
+}
+
+variable "DISCORD_TOKEN" {
+  description = "Discord Token"
+  sensitive   = true
+}
+
 provider "aws" {
-  profile    = "default"
-  region     = "sa-east-1"
+  profile = "default"
+  region  = "sa-east-1"
 }
 
 module "ecr" {
-  source  = "../modules/ecr"
+  source = "../modules/ecr"
 }
 module "task" {
-  source  = "../modules/task"
+  source = "../modules/task"
+
+  ECR_IMAGE     = var.ECR_IMAGE
+  DISCORD_TOKEN = var.DISCORD_TOKEN
 
   depends_on = [
     module.ecr
@@ -31,7 +43,7 @@ module "cluster" {
 }
 
 module "service" {
-  source     = "../modules/service"
+  source = "../modules/service"
 
   depends_on = [
     module.task,
