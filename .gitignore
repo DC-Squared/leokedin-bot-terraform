@@ -1,0 +1,7 @@
+#modules
+modules.json
+
+#terraform
+*.auto.tfvars.*
+*.terraform.*
+*.tfstate*
