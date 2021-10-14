@@ -48,13 +48,13 @@ resource "aws_ecs_task_definition" "leokedin-task" {
         { "name" : "TWITCH_CLIENT_SECRET", "value" : "${var.TWITCH_CLIENT_SECRET}" },
       ],
       "logConfiguration" : {
-          "logDriver" : "awslogs",
-          "options" : {
-            "awslogs-group" : "/ecs/leokedin/bot",
-            "awslogs-region" : "sa-east-1",
-            "awslogs-stream-prefix" : "ecs"
-          }
-        },
+        "logDriver" : "awslogs",
+        "options" : {
+          "awslogs-group" : "/ecs/leokedin/bot",
+          "awslogs-region" : "sa-east-1",
+          "awslogs-stream-prefix" : "ecs"
+        }
+      },
       portMappings = [
         {
           containerPort = 3000
