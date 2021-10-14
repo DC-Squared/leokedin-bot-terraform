@@ -56,6 +56,8 @@ module "task" {
   ECR_IMAGE               = var.ECR_IMAGE
   DISCORD_TOKEN           = var.DISCORD_TOKEN
   ECS_TASK_EXECUTION_ROLE = var.ECS_TASK_EXECUTION_ROLE
+  TWITCH_CLIENT_ID        = var.TWITCH_CLIENT_ID
+  TWITCH_CLIENT_SECRET    = var.TWITCH_CLIENT_SECRET
 
   depends_on = [
     module.ecr,
