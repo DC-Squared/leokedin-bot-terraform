@@ -7,6 +7,16 @@ variable "DISCORD_TOKEN" {
   sensitive   = true
 }
 
+variable "TWITCH_CLIENT_ID" {
+  description = "Twitch Client ID"
+  sensitive   = true
+}
+
+variable "TWITCH_CLIENT_SECRET" {
+  description = "Twitch Client Secret"
+  sensitive   = true
+}
+
 variable "ECS_TASK_EXECUTION_ROLE" {
   description = "ECS Task execution role ARN"
   sensitive   = true
@@ -33,7 +43,9 @@ resource "aws_ecs_task_definition" "leokedin-task" {
       memory    = 512
       essential = true
       "environment" : [
-        { "name" : "DISCORD_TOKEN", "value" : "${var.DISCORD_TOKEN}" }
+        { "name" : "DISCORD_TOKEN", "value" : "${var.DISCORD_TOKEN}" },
+        { "name" : "TWITCH_CLIENT_ID", "value" : "${var.TWITCH_CLIENT_ID}" },
+        { "name" : "TWITCH_CLIENT_SECRET", "value" : "${var.TWITCH_CLIENT_SECRET}" },
       ],
       "logConfiguration" : {
           "logDriver" : "awslogs",

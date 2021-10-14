@@ -23,6 +23,16 @@ variable "DISCORD_TOKEN" {
   sensitive   = true
 }
 
+variable "TWITCH_CLIENT_ID" {
+  description = "Twitch Client ID"
+  sensitive   = true
+}
+
+variable "TWITCH_CLIENT_SECRET" {
+  description = "Twitch Client Secret"
+  sensitive   = true
+}
+
 variable "ECS_TASK_EXECUTION_ROLE" {
   description = "ECS Task execution role ARN"
   sensitive   = true
